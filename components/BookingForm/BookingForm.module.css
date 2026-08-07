@@ -1,0 +1,136 @@
+.bookingCard {
+  width: 641px;
+  height: auto;
+  min-height: unset;
+  border: 1px solid var(--gray-light);
+  border-radius: 16px;
+  padding: 44px 57px;
+  background-color: var(--white);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bookingCard h2 {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--main);
+}
+
+.bookingCard p {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--gray);
+  margin: 0;
+}
+
+.formGrid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.formGrid input {
+  height: 56px;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: var(--inputs);
+  border: 1px solid transparent;
+  color: var(--main);
+  font-size: 16px;
+  line-height: 24px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font-family), sans-serif;
+  transition: all 0.2s ease;
+}
+
+.formGrid input:focus {
+  border-color: var(--grey-green);
+  background-color: var(--white);
+}
+
+.errorInput {
+  border-color: #f2b6b6 !important;
+  background-color: #ffebeb !important;
+  padding-right: 44px !important;
+}
+
+.errorLabel {
+  position: absolute;
+  left: 16px;
+  top: -9px;
+  background-color: #ffebeb;
+  padding: 0 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--button);
+  line-height: 14px;
+  z-index: 10;
+}
+
+.errorIconWrapper {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.errorText {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--button);
+  margin-top: 4px;
+  text-align: left;
+}
+
+.submitBtn {
+  height: 56px;
+  border-radius: 200px;
+  background-color: var(--grey-green);
+  color: var(--white);
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.submitBtn:hover {
+  background-color: var(--green-hover);
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

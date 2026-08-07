@@ -1,0 +1,140 @@
+.sidebarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 650px;
+  height: 676px;
+  margin: 64px 64px 0px 0px;
+}
+
+.cardBlock {
+  padding: 24px;
+  border-radius: 16px;
+  background-color: var(--inputs);
+  display: flex;
+  flex-direction: column;
+}
+
+.summaryBlock {
+  gap: 24px;
+}
+
+.camperName {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--main);
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ratingInfo,
+.locationInfo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--main);
+}
+
+.price {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--main);
+}
+
+.description {
+  margin: 0;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.vehicleBlock {
+  gap: 16px;
+}
+
+.vehicleBlock h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--main);
+}
+
+.badgesGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.badgesGrid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.badgesGrid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.badgesGrid::-webkit-scrollbar-thumb {
+  background-color: var(--grey-green);
+  border-radius: 10px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 100px;
+  background-color: var(--badges);
+  color: var(--main);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  gap: 8px;
+  text-transform: capitalize;
+  flex-shrink: 0;
+}
+
+.detailsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--gray-light);
+  list-style: none;
+}
+
+.detailsList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  color: var(--main);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.detailsList li span:first-child {
+  color: var(--text);
+  text-transform: capitalize;
+}
+
+.detailsList li span:last-child {
+  text-align: right;
+  font-weight: 500;
+}

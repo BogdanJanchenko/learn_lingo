@@ -1,0 +1,43 @@
+name: Pull Request Telegram Notifications
+
+on:
+  pull_request:
+    types: [opened, synchronize, closed]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Telegram Notification
+        run: |
+          # Екрануємо назву PR для безпечного HTML
+          PR_TITLE=$(echo "${{ github.event.pull_request.title }}" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
+          REPO_NAME=$(echo "${{ github.repository }}" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
+
+          # Визначаємо статус пулреквесту
+          if [ "${{ github.event.action }}" = "opened" ]; then
+            STATUS="🚀 <b>Новий Пулреквест!</b>"
+            TEXT="👤 Автор: <a href=\"${{ github.event.pull_request.user.html_url }}\">${{ github.event.pull_request.user.login }}</a>\n📌 Назва: <b>$PR_TITLE</b>"
+
+          elif [ "${{ github.event.action }}" = "synchronize" ]; then
+            STATUS="🔄 <b>Пулреквест оновлено (Нові коміти)!</b>"
+            TEXT="👤 Автор змін: <a href=\"https://github.com/${{ github.actor }}\">${{ github.actor }}</a>\n📌 Назва: <b>$PR_TITLE</b>"
+
+          elif [ "${{ github.event.action }}" = "closed" ]; then
+            if [ "${{ github.event.pull_request.merged }}" = "true" ]; then
+              STATUS="✅ <b>Пулреквест успішно злито (Merged)!</b>"
+            else
+              STATUS="❌ <b>Пулреквест закрито без злиття (Closed)</b>"
+            fi
+            TEXT="📌 Назва: <b>$PR_TITLE</b>\n👤 Хто закрив: <a href=\"https://github.com/${{ github.actor }}\">${{ github.actor }}</a>"
+          fi
+
+          # Формуємо фінальний текст повідомлення (замість зворотних лапок для коду використовуємо <code>)
+          MESSAGE="$STATUS\n\n📂 Репозиторій: <code>$REPO_NAME</code>\n$TEXT\n🔗 Посилання: <a href=\"${{ github.event.pull_request.html_url }}\">Переглянути PR</a>"
+
+          # Відправляємо запит в Telegram за допомогою --data-urlencode (захищає від зламу синтаксису curl)
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
+            --data-urlencode "chat_id=${{ secrets.TELEGRAM_SECRET_CHAT_ID || secrets.TELEGRAM_CHAT_ID }}" \
+            --data-urlencode "text=$MESSAGE" \
+            -d "parse_mode=HTML" \
+            -d "disable_web_page_preview=true"

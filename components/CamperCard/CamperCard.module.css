@@ -1,0 +1,127 @@
+.camperCard {
+  display: flex;
+  gap: 24px;
+  padding: 24px 97px 24px 24px;
+  border-radius: 16px;
+  background-color: var(--inputs);
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 32px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 219px;
+  height: 240px;
+  flex-shrink: 0;
+}
+
+.camperCardImage {
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.camperCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-grow: 1;
+}
+
+.camperCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.camperName {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--main);
+}
+
+.camperCardPrice {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: var(--font-family);
+  line-height: 32px;
+  color: var(--main);
+}
+
+.camperCardMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.camperCardRating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--main);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.camperCardLocation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text);
+}
+
+.camperCardBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 100px;
+  background-color: var(--badges);
+  color: var(--main);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  gap: 8px;
+}
+
+.camperCardLink {
+  width: 173px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 200px;
+  background-color: var(--grey-green);
+  color: var(--white);
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.camperCardLink:hover {
+  background-color: var(--green-hover);
+}
+
+.camperCardDescription {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text);
+  text-align: left;
+  width: 100%;
+}

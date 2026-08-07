@@ -1,0 +1,8 @@
+.homeMain {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  box-sizing: border-box;
+}

@@ -1,0 +1,51 @@
+.galleryContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 638px;
+  margin: 64px 24px 0px 64px;
+}
+
+.mainImageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 638px;
+  height: 505px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.detailsMainImage {
+  object-fit: cover;
+}
+
+.thumbsList {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.thumbWrapper {
+  position: relative;
+  width: 135.5px;
+  height: 144px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.thumbImage {
+  object-fit: cover;
+}
+
+.activeThumb {
+  border-color: var(--grey-green);
+}
