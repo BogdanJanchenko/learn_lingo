@@ -51,7 +51,7 @@ const Header = () => {
         <Link className={css.navLinkLogo} href="/">
           <Image
             className={css.headerLogo}
-            src="/images/round.png"
+            src="/images/logo.png"
             alt="LearnLingo Logo"
             width={28}
             height={28}
