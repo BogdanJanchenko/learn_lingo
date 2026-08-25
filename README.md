@@ -1,102 +1,110 @@
-# TravelTrucks 🚐
+# LearnLingo
 
-Фронтенд вебзастосунку для компанії **TravelTrucks**, яка займається орендою кемперів. Застосунок дозволяє переглядати каталог кемперів, фільтрувати їх за різними критеріями та переглядати детальну інформацію про кожен кемпер, включаючи галерею зображень, відгуки та форму бронювання.
+LearnLingo is a web application for finding and booking online language lessons with professional teachers. Users can browse teachers, filter them by language, student level, and lesson price, add teachers to favorites, and book trial lessons.
 
-## 📋 Опис проєкту
+The project was developed using **Next.js** with **TypeScript**, **Firebase**, **React Hook Form**, and **Yup**.
 
-Проєкт складається з трьох основних сторінок:
+## Features
 
-- **Домашня сторінка (`/`)** — банер з основним закликом до дії та переходом до каталогу.
-- **Сторінка каталогу (`/catalog`)** — список доступних кемперів із фільтрацією за локацією, типом кузова, типом двигуна та типом трансмісії, а також пагінацією у форматі "Load More".
-- **Сторінка деталей кемпера (`/catalog/[camperId]`)** — повна інформація про кемпер: галерея зображень, відгуки користувачів (рейтинг у форматі п'ятизіркової шкали) та форма бронювання.
+- User registration and login
+- Firebase Authentication
+- Persistent authentication state
+- Teachers catalog
+- Filtering by:
+  - Teaching language
+  - Student level
+  - Price per hour
+- Pagination with a **Load more** button
+- Detailed teacher information
+- Student reviews
+- Add/remove teachers from favorites
+- Persistent favorites after page reload
+- Private Favorites page for authenticated users
+- Trial lesson booking form
+- Form validation with React Hook Form and Yup
+- Modal windows with:
+  - Close button
+  - Backdrop click
+  - `Escape` key support
+- Protected routes
+- Responsive desktop-oriented layout
 
-## ✨ Основні функції
+## Technologies
 
-- 🏠 Домашня сторінка з переходом до каталогу по кнопці **View Now**
-- 🔍 Фільтрація кемперів за локацією, типом кузова, двигуна та трансмісії (через query-параметри бекенду)
-- ♾️ Пагінація каталогу через `useInfiniteQuery` (TanStack Query) — довантаження по 4 картки
-- 🖼️ Галерея зображень кемпера (Swiper — thumbs gallery loop)
-- ⭐ Відгуки користувачів з рейтингом
-- 📝 Форма бронювання з відправкою даних на бекенд і нотифікацією про успіх
-- 🔗 Відкриття сторінки деталей кемпера в новій вкладці
+- **Next.js**
+- **React**
+- **TypeScript**
+- **Firebase Authentication**
+- **Firebase Realtime Database**
+- **React Hook Form**
+- **Yup**
+- **React Router** / Next.js routing
+- **CSS Modules**
+- **ESLint**
 
-## 🛠️ Технології
+## Pages
 
-- [Next.js](https://nextjs.org/) (App Router)
-- [TypeScript](https://www.typescriptlang.org/)
-- [TanStack Query](https://tanstack.com/query/latest) (`useInfiniteQuery`)
-- [React Icons](https://react-icons.github.io/react-icons/)
-- [Swiper](https://swiperjs.com/) — галерея зображень
-- CSS Modules / Tailwind CSS — _(вкажіть, що саме використали)_
+### Home
 
-## 🌐 Бекенд
+The Home page contains information about the advantages of the service and a call-to-action that redirects users to the Teachers page.
 
-Дані отримуються з API: [https://campers-api.goit.study](https://campers-api.goit.study)
+### Teachers
 
-## 🚀 Встановлення та запуск
+The Teachers page displays available language teachers.
 
-1. Клонуйте репозиторій:
+Initially, four teacher cards are displayed. Additional teachers can be loaded using the **Load more** button.
 
-   ```bash
-   git clone https://github.com/<ваш-username>/<назва-репозиторію>.git
-   cd <назва-репозиторію>
-   ```
+Users can filter teachers by:
 
-2. Встановіть залежності:
+- Language
+- Student knowledge level
+- Price per hour
 
-   ```bash
-   npm install
-   ```
+Each teacher card provides basic information about the teacher and allows the user to:
 
-3. Створіть файл `.env.local` (якщо потрібно) та додайте необхідні змінні оточення:
+- Add/remove the teacher from favorites
+- Expand the card with **Read more**
+- View reviews and additional information
+- Book a trial lesson
 
-   ```
-   NEXT_PUBLIC_API_URL=https://campers-api.goit.study
-   ```
+### Favorites
 
-4. Запустіть проєкт у режимі розробки:
+The Favorites page is available only to authenticated users.
 
-   ```bash
-   npm run dev
-   ```
+It displays all teachers added to the user's favorites.
 
-5. Відкрийте [http://localhost:3000](http://localhost:3000) у браузері.
+The Favorites page uses the same teacher card design as the Teachers page.
 
-## 📦 Збірка проєкту
+## Authentication
 
-```bash
-npm run build
-npm run start
-```
+Firebase Authentication is used to provide:
 
-## 🌍 Деплой
+- Registration
+- Login
+- Current user detection
+- Logout
+- Persistent authentication state
 
-Проєкт задеплоєний на [Vercel](https://vercel.com/) / [Netlify](https://www.netlify.com/):
-🔗 **[Посилання на деплой](#)**
+Unauthorized users cannot access the Favorites page.
 
-## 📁 Структура проєкту
+If an unauthorized user tries to add a teacher to favorites, they are informed that this functionality is available only to authenticated users.
 
-```
-travel-trucks/
-├── app/
-│   ├── page.tsx                 # Домашня сторінка
-│   ├── catalog/
-│   │   ├── page.tsx              # Сторінка каталогу
-│   │   └── [camperId]/
-│   │       └── page.tsx          # Сторінка деталей кемпера
-│   └── layout.tsx
-├── components/
-├── services/                     # Запити до API
-├── types/                        # Типи TypeScript
-├── public/
-└── README.md
-```
+## Firebase Realtime Database
 
-## 👤 Автор
+Teacher information is stored in Firebase Realtime Database.
 
-**[Ваше ім'я]**
-GitHub: [@ваш-username](https://github.com/<ваш-username>)
+Each teacher contains the following fields:
 
-## 📄 Ліцензія
-
-Цей проєкт створено в навчальних цілях.
+```text
+name
+surname
+languages
+levels
+rating
+reviews
+price_per_hour
+lessons_done
+avatar_url
+lesson_info
+conditions
+experience
