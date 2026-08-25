@@ -1,0 +1,48 @@
+.mobileFiltersBlock {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 16px;
+
+  margin-block: 16px;
+  width: 100%;
+}
+
+.mobileFiltersButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+
+  background-color: var(--button);
+
+  border-radius: 12px;
+  padding: 8px 40px;
+}
+
+.mobileFiltersReset {
+  font-weight: 500;
+  line-height: 150%;
+  font-size: 16px;
+}
+
+.desktopFiltersNav {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .desktopFiltersNav {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    max-width: 1114px;
+  }
+
+  .mobileFiltersBlock {
+    display: none;
+  }
+}

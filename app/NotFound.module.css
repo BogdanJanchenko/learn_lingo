@@ -1,17 +1,14 @@
-.notFoundContainer {
+.notFound {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 72px);
-  margin-top: 72px;
-  box-sizing: border-box;
+  margin-top: 20px;
   background-color: #ffffff;
-  padding: 20px;
 }
 
 .notFoundImage {
-  max-width: 100%;
+  width: min(100%, 420px);
   height: auto;
   margin-bottom: 32px;
   object-fit: contain;
@@ -23,13 +20,5 @@
   font-weight: 700;
   line-height: 1.2;
   margin: 0 0 8px 0;
-  color: #000000;
-}
-
-.notFoundText {
-  font-family: var(--font-family), sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  margin: 0;
   color: #000000;
 }

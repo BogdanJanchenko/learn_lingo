@@ -1,0 +1,77 @@
+.loginRegisterLinksList {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.loginRegisterLinksList .loginButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: #121417;
+  transition: color 0.2s ease;
+}
+
+.loginRegisterLinksList .loginButton:hover,
+.loginRegisterLinksList .loginButton:focus {
+  color: var(--button);
+}
+
+.loginRegisterLinksList .registerButton {
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: #fff;
+  background-color: var(--button);
+  min-width: 166px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: opacity 0.2s ease;
+}
+
+.loginRegisterLinksList .registerButton:hover,
+.loginRegisterLinksList .registerButton:focus {
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 320px) {
+  .loginRegisterLinksList {
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .loginRegisterLinksList .loginButton {
+    padding: 0;
+  }
+}
+
+.userBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.userName {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+}
+
+.logoutButton {
+  border-radius: 12px;
+  padding: 14px 39px;
+  background-color: var(--button);
+}
+
+.logoutButton:hover,
+.logoutButton:active,
+.logoutButton:focus {
+  background-color: #121417;
+  color: #fff;
+}

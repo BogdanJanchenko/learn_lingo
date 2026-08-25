@@ -1,0 +1,32 @@
+.statsList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 40px;
+  gap: 40px;
+  border: 2px dashed var(--button);
+  border-radius: 30px;
+  min-width: 320px;
+  width: 100%;
+}
+
+.statsItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.statsNumber {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.14;
+  color: #121417;
+}
+
+.statsDesc {
+  font-size: 14px;
+  line-height: 1.28;
+  color: rgba(18, 20, 23, 0.6);
+  max-width: 74px;
+}

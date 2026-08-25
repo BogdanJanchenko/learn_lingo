@@ -1,0 +1,47 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 0;
+}
+
+.navLinksList {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.navLink {
+  line-height: 1.25;
+  color: #121417;
+  padding: 26px 0;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover,
+.navLink:focus {
+  color: var(--button);
+}
+
+@media screen and (max-width: 320px) {
+  .navLinksList {
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .navLink {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .navLink {
+    font-size: 18px;
+  }
+}

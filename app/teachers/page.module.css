@@ -1,0 +1,31 @@
+.main {
+  background: #f8f8f8;
+  flex-grow: 1;
+  width: 100%;
+
+  min-height: 100vh;
+}
+
+.loadMoreButton {
+  border-radius: 12px;
+  padding: 16px 48px;
+  background-color: var(--button);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+  transition: var(--transition);
+}
+
+.loadMoreButton:hover,
+.loadMoreButton:active,
+.loadMoreButton:focus {
+  background-color: #121417;
+  color: white;
+  margin-bottom: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .loadMoreButton {
+    margin-bottom: 96px;
+  }
+}

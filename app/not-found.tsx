@@ -1,20 +1,22 @@
 import Image from 'next/image';
 import css from './NotFound.module.css';
+import Container from '@/components/Container/Container';
 
 const NotFound = () => {
   return (
-    <main className={css.notFoundContainer}>
-      <Image
-        src="/images/trailer-not-found.png"
-        alt="Trailer not found"
-        width={586}
-        height={556}
-        className={css.notFoundImage}
-        priority
-      />
-      <h1 className={css.notFoundTitle}>404</h1>
-      <p className={css.notFoundText}>Page not found</p>
-    </main>
+    <Container>
+      <main className={css.notFound}>
+        <Image
+          src="/images/not-found.png"
+          alt="404"
+          width={512}
+          height={512}
+          className={css.notFoundImage}
+          priority
+        />
+        <h2 className={css.notFoundTitle}>Page not found</h2>
+      </main>
+    </Container>
   );
 };
 

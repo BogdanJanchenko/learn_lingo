@@ -1,17 +1,41 @@
 :root {
-  --main: #101828;
   --text: #475467;
   --white: #fff;
   --inputs: #f7f7f7;
   --badges: #f2f4f7;
   --gray: #6c717b;
   --gray-light: #dadde1;
-  --button: #e44848;
   --button-hover: #d84343;
   --rating: #ffc531;
   --grey-green: #829b91;
   --olive: #f0f1f1;
   --green-hover: #6d7b75;
+
+  --yellow-main: #fbe9ba;
+  --yellow-button: #f4c550;
+  --yellow-laptop: #d08f38;
+
+  --green-main: #cbded3;
+  --green-button: #9fbaae;
+  --green-laptop: #183e49;
+
+  --blue-main: #bfd6ea;
+  --blue-button: #9fb7ce;
+  --blue-laptop: #1f385a;
+
+  --pink-main: #f2c0bd;
+  --pink-button: #e0a39a;
+  --pink-laptop: #982a27;
+
+  --orange-main: #f4c8ba;
+  --orange-button: #f0aa8d;
+  --orange-laptop: #ca5b38;
+
+  --transition: 0.2s ease-in-out;
+
+  --main: #8a8a89;
+  --button: #8a8a89;
+  --laptop: #8a8a89;
 }
 
 html {
@@ -28,13 +52,14 @@ html {
 body {
   margin: 0;
   background-color: var(--white);
-  color: var(--main);
   font-family: var(--font-family), sans-serif;
+  color: #121417;
+  font-weight: 400;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 h1,

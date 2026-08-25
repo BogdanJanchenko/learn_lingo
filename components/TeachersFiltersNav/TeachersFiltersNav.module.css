@@ -1,0 +1,132 @@
+.filtersForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .filtersForm {
+    flex-direction: row;
+    margin-block: 32px;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: #8a8a89;
+}
+
+.selectWrapper {
+  position: relative;
+  width: 221px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  width: 100%;
+  padding: 14px 0px 14px 18px;
+  border: none;
+  border-radius: 14px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 111%;
+  color: #121417;
+  background: #fff;
+  cursor: pointer;
+  appearance: none;
+  transition: box-shadow var(--transition);
+}
+
+.select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #121417;
+}
+
+.chevron {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 18px;
+  color: #121417;
+  transition: transform var(--transition);
+}
+
+.chevronOpen {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.applyButton {
+  width: 221px;
+  margin-top: 16px;
+  padding: 8px;
+  border: none;
+  border-radius: 12px;
+  background: var(--button);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+
+.applyButton:hover {
+  opacity: 0.85;
+}
+
+.dropdown {
+  border-radius: 12px;
+  min-width: 185px;
+  max-height: 160px;
+  background: #fff;
+  position: absolute;
+  overflow-y: auto;
+  top: 52px;
+  z-index: 20;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 4px;
+  padding: 14px 18px;
+  box-sizing: content-box;
+}
+
+.option,
+.optionActive {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 111%;
+}
+
+.option {
+  color: rgba(18, 20, 23, 0.2);
+}
+
+.option:nth-child(1) {
+  margin-top: 20px;
+}
+
+.optionActive {
+  color: #121417;
+}

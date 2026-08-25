@@ -1,0 +1,293 @@
+.teachersList {
+  margin-bottom: 64px;
+}
+
+.teacherCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 24px;
+  margin-bottom: 32px;
+}
+
+.teacherCard:last-child {
+  margin-bottom: 0;
+}
+
+.avatarWrapper {
+  position: relative;
+  flex-shrink: 0;
+  border: 3px solid var(--main);
+  padding: 9px;
+  border-radius: 50%;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.onlineDot {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #34c759;
+  border: 3px solid #fff;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.topRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.label {
+  font-size: 14px;
+  color: rgba(18, 20, 23, 0.5);
+  margin-bottom: 4px;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 1440px) {
+  .statsDesktop {
+    margin-left: 149px;
+  }
+}
+
+.statsDesktop,
+.statsMobile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #121417;
+  white-space: wrap;
+}
+
+.statsMobile {
+  display: none;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  white-space: normal;
+}
+
+.colorStats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(18, 20, 23, 0.15);
+}
+
+@media screen and (max-width: 768px) {
+  .divider {
+    display: none;
+  }
+}
+
+.price {
+  color: #2f9e44;
+  font-weight: 600;
+}
+
+.favoriteButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  color: #121417;
+  transition: color var(--transition);
+}
+
+@media screen and (min-width: 1440px) {
+  .favoriteButton {
+    height: 56px;
+    display: flex;
+    align-items: start;
+  }
+}
+
+.favoriteButton:hover {
+  color: var(--button);
+}
+
+.favoriteButton:disabled {
+  cursor: wait;
+}
+
+.favorite {
+  color: var(--main);
+}
+
+.speaks {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.speaksLabel {
+  color: rgba(18, 20, 23, 0.5);
+}
+
+.speaksLanguages {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.infoRow {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.infoLabel {
+  color: rgba(18, 20, 23, 0.5);
+}
+
+.readMore {
+  display: inline-block;
+  margin: 8px 0 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 15px;
+  text-decoration: underline;
+  color: #121417;
+}
+
+.aboutReviews {
+  opacity: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.aboutReviews.visible {
+  opacity: 1;
+  max-height: 2000px;
+  margin-bottom: 16px;
+}
+
+.experienceText {
+  line-height: 1.5;
+  color: #121417;
+  margin-bottom: 24px;
+  max-width: 900px;
+}
+
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reviewItem {
+  border-top: 1px solid rgba(18, 20, 23, 0.1);
+  padding-top: 16px;
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.reviewerRating {
+  color: #f4c550;
+}
+
+.reviewComment {
+  font-size: 14px;
+  color: rgba(18, 20, 23, 0.7);
+}
+
+.levelsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.levelBadge,
+.levelBadgeActive {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.levelBadge {
+  border: 1px solid rgba(18, 20, 23, 0.15);
+  color: #121417;
+}
+
+.levelBadgeActive {
+  background: var(--button);
+  color: #121417;
+}
+
+.bookButton {
+  display: none;
+  margin-top: 0;
+  max-width: 232px;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background: var(--button);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.bookButton:hover,
+.bookButton:active,
+.bookButton:focus {
+  background-color: #121417;
+  color: #fff;
+}
+
+.bookButton.visible {
+  display: block;
+  margin-top: 32px;
+}
+
+@media screen and (max-width: 768px) {
+  .teacherCard {
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .statsDesktop {
+    display: none;
+  }
+
+  .statsMobile {
+    display: flex;
+  }
+}

@@ -1,96 +1,116 @@
+// components/BookingForm/BookingForm.tsx
 'use client';
 
+import * as yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import toast from 'react-hot-toast';
 import Image from 'next/image';
+import type { Teacher } from '@/types/teacher';
 import css from './BookingForm.module.css';
-import { CreateBookingResponse, CreateBookingPayload } from '@/types/campers';
 
 interface BookingFormProps {
-  onSubmitBooking: (values: CreateBookingPayload) => Promise<CreateBookingResponse>;
-  isSubmitting: boolean;
+  teacher: Teacher;
+  onSuccess: () => void;
 }
 
-const bookingValidationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Name must be at least 2 characters')
-    .required('Please enter your full name.'),
-  email: Yup.string().email('Please enter a valid email address.').required('Comment is required'),
+interface BookingFormValues {
+  reason: string;
+  fullName: string;
+  email: string;
+  phone: string;
+}
+
+const bookingSchema = yup.object({
+  reason: yup.string().required('Please select a reason'),
+  fullName: yup.string().trim().required('Full name is required'),
+  email: yup.string().trim().email('Invalid email').required('Email is required'),
+  phone: yup.string().trim().required('Phone number is required'),
 });
 
-const BookingForm = ({ onSubmitBooking, isSubmitting }: BookingFormProps) => {
-  const initialValues: CreateBookingPayload = {
-    name: '',
-    email: '',
-  };
+const REASONS = [
+  'Career and business',
+  'Lesson for kids',
+  'Living abroad',
+  'Exams and coursework',
+  'Culture, travel or hobby',
+];
 
-  const handleSubmit = async (
-    values: CreateBookingPayload,
-    { resetForm }: { resetForm: () => void }
-  ) => {
-    await onSubmitBooking({
-      name: values.name,
-      email: values.email,
-    });
-    resetForm();
-  };
-
-  return (
-    <section className={css.bookingCard}>
-      <div className={css.headerBlock}>
-        <h2>Book your campervan now</h2>
-        <p>Stay connected! We are always ready to help you.</p>
-      </div>
-
-      <Formik
-        initialValues={initialValues}
-        validationSchema={bookingValidationSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ errors, touched }) => (
-          <Form className={css.formGrid}>
-            <div className={css.inputsGroup}>
-              <div className={css.inputWrapper}>
-                {errors.name && touched.name && <span className={css.errorLabel}>Name*</span>}
-                <Field
-                  type="text"
-                  name="name"
-                  placeholder={errors.name && touched.name ? '' : 'Name*'}
-                  className={errors.name && touched.name ? css.errorInput : ''}
-                />
-                {errors.name && touched.name && (
-                  <div className={css.errorIconWrapper}>
-                    <Image src="/icons/error-icon.svg" alt="Error" width={24} height={24} />
-                  </div>
-                )}
-                <ErrorMessage name="name" component="span" className={css.errorText} />
-              </div>
-
-              <div className={css.inputWrapper}>
-                {errors.email && touched.email && <span className={css.errorLabel}>Email*</span>}
-                <Field
-                  type="text"
-                  name="email"
-                  placeholder={errors.email && touched.email ? '' : 'Email*'}
-                  className={errors.email && touched.email ? css.errorInput : ''}
-                />
-                {errors.email && touched.email && (
-                  <div className={css.errorIconWrapper}>
-                    <Image src="/icons/error-icon.svg" alt="Error" width={24} height={24} />
-                  </div>
-                )}
-                <ErrorMessage name="email" component="span" className={css.errorText} />
-              </div>
-            </div>
-
-            <button className={css.submitBtn} type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Sending...' : 'Send'}
-            </button>
-          </Form>
-        )}
-      </Formik>
-    </section>
-  );
+const initialValues: BookingFormValues = {
+  reason: REASONS[0],
+  fullName: '',
+  email: '',
+  phone: '',
 };
 
-export default BookingForm;
+export default function BookingForm({ teacher, onSuccess }: BookingFormProps) {
+  async function handleSubmit(values: BookingFormValues) {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      toast.success('Your trial lesson request has been sent!');
+      onSuccess();
+    } catch {
+      toast.error('Failed to send request, please try again');
+    }
+  }
+
+  return (
+    <Formik initialValues={initialValues} validationSchema={bookingSchema} onSubmit={handleSubmit}>
+      {({ isSubmitting }) => (
+        <Form className={css.form}>
+          <h2 className={css.title}>Book trial lesson</h2>
+          <p className={css.subtitle}>
+            Our experienced tutor will assess your current language level, discuss your learning
+            goals, and tailor the lesson to your specific needs.
+          </p>
+
+          <div className={css.teacherRow}>
+            <Image
+              src={teacher.avatar_url}
+              alt={teacher.name}
+              width={44}
+              height={44}
+              className={css.avatar}
+            />
+            <div>
+              <p className={css.teacherLabel}>Your teacher</p>
+              <p className={css.teacherName}>
+                {teacher.name} {teacher.surname}
+              </p>
+            </div>
+          </div>
+
+          <fieldset className={css.reasons}>
+            <legend className={css.legend}>What is your main reason for learning English?</legend>
+            {REASONS.map((reason) => (
+              <label key={reason} className={css.radioLabel}>
+                <Field type="radio" name="reason" value={reason} className={css.radioInput} />
+                {reason}
+              </label>
+            ))}
+            <ErrorMessage name="reason" component="span" className={css.error} />
+          </fieldset>
+
+          <div className={css.field}>
+            <Field type="text" name="fullName" placeholder="Full Name" className={css.input} />
+            <ErrorMessage name="fullName" component="span" className={css.error} />
+          </div>
+
+          <div className={css.field}>
+            <Field type="email" name="email" placeholder="Email" className={css.input} />
+            <ErrorMessage name="email" component="span" className={css.error} />
+          </div>
+
+          <div className={css.field}>
+            <Field type="tel" name="phone" placeholder="Phone number" className={css.input} />
+            <ErrorMessage name="phone" component="span" className={css.error} />
+          </div>
+
+          <button type="submit" className={css.submitButton} disabled={isSubmitting}>
+            Book
+          </button>
+        </Form>
+      )}
+    </Formik>
+  );
+}

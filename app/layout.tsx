@@ -2,15 +2,12 @@ import localFont from 'next/font/local';
 import 'modern-normalize';
 import './globals.css';
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
 import { Toaster } from 'react-hot-toast';
 
 import Header from '@/components/Header/Header';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import { Metadata } from 'next';
+import { ThemeProvider } from '@/components/ThemeProvider/ThemeProvider';
 
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
@@ -18,24 +15,29 @@ const baseUrl = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: 'TravelTrucks - Campers of your dreams',
+  title: 'LearnLingo - Find your perfect language tutor',
   description:
-    'You can find everything you want in our catalog. Rent the best camper vans for your perfect road trip.',
-  keywords: ['camper rental', 'rent motorhome', 'camper vans', 'road trip', 'rent campers Ukraine'],
-  authors: [{ name: 'TravelTrucks Team' }],
+    'Find your personal language tutor online. Filter by language, level and price, and book a free trial lesson.',
+  keywords: [
+    'language tutor',
+    'online language lessons',
+    'learn english',
+    'find a language teacher',
+  ],
+  authors: [{ name: 'LearnLingo Team' }],
 
   openGraph: {
-    title: 'TravelTrucks - Campers of your dreams',
+    title: 'LearnLingo - Find your perfect language tutor',
     description:
-      'You can find everything you want in our catalog. High-quality camper vans for unforgettable journeys.',
-    url: baseUrl, // Теперь ссылка на страницу в OG-тегах тоже динамическая
-    siteName: 'TravelTrucks',
+      'Find a personal language tutor online and start learning today. Experienced teachers, flexible schedule, free trial lesson.',
+    url: baseUrl,
+    siteName: 'LearnLingo',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'TravelTrucks - Premium Camper Vans',
+        alt: 'LearnLingo - Language tutors',
       },
     ],
     locale: 'en_US',
@@ -44,9 +46,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'TravelTrucks - Campers of your dreams',
+    title: 'LearnLingo - Find your perfect language tutor',
     description:
-      'You can find everything you want in our catalog. High-quality camper vans for unforgettable journeys.',
+      'Find a personal language tutor online and start learning today. Experienced teachers, flexible schedule, free trial lesson.',
     images: ['/images/og-image.jpg'],
   },
 
@@ -63,46 +65,37 @@ export const metadata: Metadata = {
   },
 };
 
-const inter = localFont({
+const roboto = localFont({
   src: [
     {
-      path: '../public/fonts/Inter-Regular.woff2',
+      path: '../public/fonts/Roboto-Regular.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../public/fonts/Inter-Medium.woff2',
+      path: '../public/fonts/Roboto-Medium.woff2',
       weight: '500',
       style: 'normal',
     },
     {
-      path: '../public/fonts/Inter-SemiBold.woff2',
-      weight: '600',
+      path: '../public/fonts/Roboto-Bold.woff2',
+      weight: '700',
       style: 'normal',
     },
   ],
   variable: '--font-family',
 });
 
-const manrope = localFont({
-  src: [
-    {
-      path: '../public/fonts/Manrope-Regular.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
-  variable: '--second-family',
-});
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
+    <html lang="en" className={`${roboto.variable}`}>
       <body>
         <TanStackProvider>
-          <Toaster position="top-right" />
-          <Header />
-          {children}
+          <ThemeProvider>
+            <Toaster position="top-right" />
+            <Header />
+            {children}
+          </ThemeProvider>
         </TanStackProvider>
       </body>
     </html>

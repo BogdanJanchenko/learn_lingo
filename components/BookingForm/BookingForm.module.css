@@ -1,136 +1,168 @@
-.bookingCard {
-  width: 641px;
-  height: auto;
-  min-height: unset;
-  border: 1px solid var(--gray-light);
-  border-radius: 16px;
-  padding: 44px 57px;
-  background-color: var(--white);
-  box-sizing: border-box;
+.form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  justify-content: center;
+  align-items: start;
 }
 
-.headerBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.bookingCard h2 {
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 600;
-  margin: 0;
-  color: var(--main);
-}
-
-.bookingCard p {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-  color: var(--gray);
-  margin: 0;
-}
-
-.formGrid {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.inputsGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 100%;
-}
-
-.inputWrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.formGrid input {
-  height: 56px;
-  padding: 16px;
-  border-radius: 12px;
-  background-color: var(--inputs);
-  border: 1px solid transparent;
-  color: var(--main);
-  font-size: 16px;
-  line-height: 24px;
-  outline: none;
-  width: 100%;
-  box-sizing: border-box;
-  font-family: var(--font-family), sans-serif;
-  transition: all 0.2s ease;
-}
-
-.formGrid input:focus {
-  border-color: var(--grey-green);
-  background-color: var(--white);
-}
-
-.errorInput {
-  border-color: #f2b6b6 !important;
-  background-color: #ffebeb !important;
-  padding-right: 44px !important;
-}
-
-.errorLabel {
-  position: absolute;
-  left: 16px;
-  top: -9px;
-  background-color: #ffebeb;
-  padding: 0 6px;
-  font-size: 12px;
+.title {
   font-weight: 500;
-  color: var(--button);
-  line-height: 14px;
-  z-index: 10;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
 }
 
-.errorIconWrapper {
-  position: absolute;
-  right: 16px;
-  top: 16px;
+.subtitle {
+  font-size: 16px;
+  line-height: 138%;
+  color: rgba(18, 20, 23, 0.8);
+  margin-bottom: 20px;
+}
+
+.teacherRow {
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
+  gap: 14px;
+  margin-bottom: 40px;
 }
 
-.errorText {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--button);
-  margin-top: 4px;
-  text-align: left;
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 44px;
+  height: 44px;
 }
 
-.submitBtn {
-  height: 56px;
-  border-radius: 200px;
-  background-color: var(--grey-green);
-  color: var(--white);
-  border: none;
-  font-size: 16px;
+.teacherLabel {
   font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+  color: #8a8a89;
+  margin-bottom: 4px;
+}
+
+.teacherName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.reasons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  border: none;
+  margin-bottom: 24px;
+}
+
+.legend {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 133%;
+  margin-bottom: 20px;
+}
+
+.radioLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 138%;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.radioInput {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #d0d0d0;
+  background-color: #fff;
   cursor: pointer;
-  margin-top: 24px;
-  transition: background-color 0.2s ease;
+  outline: none;
+  flex-shrink: 0;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.radioInput:checked {
+  border-color: var(--button);
+  background-color: var(--button);
+  box-shadow: inset 0 0 0 4px #fff;
+}
+
+.radioInput:hover {
+  border-color: var(--button);
+}
+
+.radioInput:focus-visible {
+  outline: 2px solid var(--button);
+  outline-offset: 2px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 18px;
   width: 100%;
 }
 
-.submitBtn:hover {
-  background-color: var(--green-hover);
+.input {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 0px 16px 18px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color var(--transition);
+  width: 100%;
+  max-width: 472px;
 }
 
-.submitBtn:disabled {
+.input::placeholder {
+  font-size: 16px;
+  line-height: 138%;
+}
+
+.input:focus {
+  border-color: #121417;
+}
+
+.error {
+  color: #eb5757;
+  font-size: 13px;
+}
+
+.submitButton {
+  margin-top: 22px;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background: var(--button);
+  color: #121417;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity var(--transition);
+  width: 100%;
+}
+
+.submitButton:hover {
+  opacity: 0.9;
+}
+
+.submitButton:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
