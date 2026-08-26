@@ -1,4 +1,3 @@
-// components/MobileMenu/MobileMenu.tsx
 'use client';
 
 import Navigation from '../Navigation/Navigation';

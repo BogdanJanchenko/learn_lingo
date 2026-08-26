@@ -1,4 +1,3 @@
-// lib/firebase/filters.ts
 import { ref, get } from 'firebase/database';
 import { db } from './config';
 import type { Teacher } from '@/types/teacher';

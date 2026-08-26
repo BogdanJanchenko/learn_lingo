@@ -21,9 +21,6 @@ const Header = () => {
   const [authMode, setAuthMode] = useState<'login' | 'register' | null>(null);
 
   const setUser = useAuthStore((state) => state.setUser);
-
-  // Слежка за статусом авторизации — Header монтируется на каждой странице,
-  // поэтому подписка живёт здесь, без отдельного AuthProvider
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);

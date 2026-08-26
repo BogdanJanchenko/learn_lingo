@@ -1,4 +1,3 @@
-// components/AuthForm/LoginForm.tsx
 'use client';
 
 import { useId, useState } from 'react';

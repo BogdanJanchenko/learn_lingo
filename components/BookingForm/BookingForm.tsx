@@ -1,4 +1,3 @@
-// components/BookingForm/BookingForm.tsx
 'use client';
 
 import * as yup from 'yup';

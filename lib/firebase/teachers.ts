@@ -1,4 +1,3 @@
-// lib/firebase/teachers.ts
 import { ref, get, query, orderByChild, equalTo, limitToFirst } from 'firebase/database';
 import { db } from './config';
 import type { Teacher } from '@/types/teacher';

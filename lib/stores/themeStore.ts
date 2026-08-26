@@ -13,7 +13,6 @@ export const useThemeStore = create<ThemeState>()(
       themeName: null,
 
       setRandomTheme: () => {
-        // Уже есть тема — ничего не делаем
         if (get().themeName) return;
 
         const random = themeNames[Math.floor(Math.random() * themeNames.length)];
