@@ -1,110 +1,124 @@
-# LearnLingo
+# LearnLingo — Find Your Perfect Language Teacher
 
-LearnLingo is a web application for finding and booking online language lessons with professional teachers. Users can browse teachers, filter them by language, student level, and lesson price, add teachers to favorites, and book trial lessons.
+A web application for a company that connects students with online language teachers. Users can browse a catalog of teachers, filter them by language, proficiency level and price, book a trial lesson, and save favorite teachers to a personal, authenticated-only page.
 
-The project was developed using **Next.js** with **TypeScript**, **Firebase**, **React Hook Form**, and **Yup**.
+## About the Project
 
-## Features
+The app consists of three main pages:
 
-- User registration and login
-- Firebase Authentication
-- Persistent authentication state
-- Teachers catalog
-- Filtering by:
-  - Teaching language
-  - Student level
-  - Price per hour
-- Pagination with a **Load more** button
-- Detailed teacher information
-- Student reviews
-- Add/remove teachers from favorites
-- Persistent favorites after page reload
-- Private Favorites page for authenticated users
-- Trial lesson booking form
-- Form validation with React Hook Form and Yup
-- Modal windows with:
-  - Close button
-  - Backdrop click
-  - `Escape` key support
-- Protected routes
-- Responsive desktop-oriented layout
+- **Home** — presents the company's advantages and a call-to-action link that redirects to the Teachers page. The styling is based on the provided design layout with a custom color palette variation.
+- **Teachers** — displays a list of teachers that can be filtered by:
+  - language taught
+  - student proficiency level
+  - price per hour
+  
+  Four teacher cards are rendered initially; more are fetched from the database via a **Load more** button. Each card can be expanded with **Read more** to show detailed information and student reviews, and includes a **Book trial lesson** button that opens a validated booking form in a modal.
+- **Favorites** — a private page, available only to authenticated users, listing all teachers the user has added to favorites. Its styling matches the Teachers page.
 
-## Technologies
+### Key functionality
 
-- **Next.js**
-- **React**
-- **TypeScript**
-- **Firebase Authentication**
-- **Firebase Realtime Database**
-- **React Hook Form**
-- **Yup**
-- **React Router** / Next.js routing
-- **CSS Modules**
-- **ESLint**
+- User authentication (sign up, log in, log out, get current user data) via Firebase.
+- Registration/login forms and the trial-lesson booking form are built with **react-hook-form** and **yup**, with all fields required and validated.
+- Modals close via the close ("×") button, a click on the backdrop, or the **Esc** key.
+- Teacher data is stored in Firebase Realtime Database with the following fields: `name`, `surname`, `languages`, `levels`, `rating`, `reviews`, `price_per_hour`, `lessons_done`, `avatar_url`, `lesson_info`, `conditions`, `experience`.
+- Clicking the heart icon:
+  - as an **unauthenticated** user — shows a modal/notification stating the feature is available only for authenticated users.
+  - as an **authenticated** user — adds/removes the teacher from favorites, and the heart's color toggles accordingly. The favorite state persists across page refresh.
+- Filtering and page navigation are implemented with React Router equivalents adapted to the Next.js App/Pages Router.
 
-## Pages
+## Tech Stack
 
-### Home
+- **Next.js** — React framework used for routing, page structure and rendering
+- **React** — UI components
+- **Firebase (Realtime Database & Authentication)** — backend for teacher data storage and user authentication
+- **react-hook-form** — form state management
+- **yup** — form validation schemas
+- **CSS / CSS Modules (or your styling solution)** — layout and styling based on the provided design
 
-The Home page contains information about the advantages of the service and a call-to-action that redirects users to the Teachers page.
+## Design
 
-### Teachers
+The layout follows the Figma design provided in the assignment, implemented for desktop resolution with semantic, valid markup.
 
-The Teachers page displays available language teachers.
+🔗 Design file: *[add your Figma link here]*
 
-Initially, four teacher cards are displayed. Additional teachers can be loaded using the **Load more** button.
+## Project Requirements (Technical Assignment)
 
-Users can filter teachers by:
+This project was built according to the following technical assignment:
 
-- Language
-- Student knowledge level
-- Price per hour
+1. Implement user authentication with Firebase (sign up, log in, get current user, log out).
+2. Build the registration/login form with `react-hook-form` and `yup`; all fields required; modal closes via the close button, backdrop click, or Esc key.
+3. Create a `teachers` collection in Firebase Realtime Database with fields: `name`, `surname`, `languages`, `levels`, `rating`, `reviews`, `price_per_hour`, `lessons_done`, `avatar_url`, `lesson_info`, `conditions`, `experience`.
+4. Implement the teacher card UI according to the design.
+5. Render 4 teacher cards on the Teachers page initially, with additional cards loaded from the database via a **Load more** button.
+6. Handle the favorite ("heart") button: prompt unauthenticated users to log in; toggle favorite state and heart color for authenticated users.
+7. Persist favorite state across page reloads for authenticated users.
+8. Allow removing a teacher from favorites by clicking the heart again.
+9. Expand teacher details and reviews via **Read more**.
+10. Open a validated trial-lesson booking form (via `react-hook-form` + `yup`) via **Book trial lesson**.
+11. Ensure all modals close via close button, backdrop click, or Esc key.
+12. Provide a private **Favorites** page for authenticated users, styled consistently with the Teachers page.
 
-Each teacher card provides basic information about the teacher and allows the user to:
+### Bonus tasks
 
-- Add/remove the teacher from favorites
-- Expand the card with **Read more**
-- View reviews and additional information
-- Book a trial lesson
+- Routing implemented with Next.js file-based routing (as a replacement for React Router).
+- Filtering by language, student level, and price per hour.
 
-### Favorites
+## Getting Started
 
-The Favorites page is available only to authenticated users.
+### Prerequisites
 
-It displays all teachers added to the user's favorites.
+- Node.js (v18 or higher recommended)
+- A Firebase project with Realtime Database and Authentication enabled
 
-The Favorites page uses the same teacher card design as the Teachers page.
+### Installation
 
-## Authentication
+```bash
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
+npm install
+```
 
-Firebase Authentication is used to provide:
+### Environment variables
 
-- Registration
-- Login
-- Current user detection
-- Logout
-- Persistent authentication state
+Create a `.env.local` file in the project root with your Firebase configuration:
 
-Unauthorized users cannot access the Favorites page.
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_DATABASE_URL=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+```
 
-If an unauthorized user tries to add a teacher to favorites, they are informed that this functionality is available only to authenticated users.
+### Run locally
 
-## Firebase Realtime Database
+```bash
+npm run dev
+```
 
-Teacher information is stored in Firebase Realtime Database.
+The app will be available at `http://localhost:3000`.
 
-Each teacher contains the following fields:
+### Build
 
-```text
-name
-surname
-languages
-levels
-rating
-reviews
-price_per_hour
-lessons_done
-avatar_url
-lesson_info
-conditions
-experience
+```bash
+npm run build
+npm start
+```
+
+## Deployment
+
+The project is deployed on **[Vercel / Netlify / GitHub Pages — specify which one you used]**.
+
+🔗 Live demo: *[add your deployment link here]*
+
+## Acceptance Criteria
+
+- ✅ Markup implemented for desktop according to the design, semantic and valid.
+- ✅ No errors in the browser console.
+- ✅ Built with Next.js (React-based).
+- ✅ Authentication and data operations implemented via Firebase.
+- ✅ Interactivity matches the technical assignment.
+- ✅ Code is formatted and free of comments.
+- ✅ Project is deployed to a public hosting provider.
